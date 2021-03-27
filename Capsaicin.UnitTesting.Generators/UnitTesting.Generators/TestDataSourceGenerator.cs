@@ -49,7 +49,7 @@ namespace Capsaicin.UnitTesting.Generators
         /// <inheritdoc/>
         public void Initialize(GeneratorInitializationContext context)
         {
-            //Debugger.Launch(); // enable this line for debugging
+            // Debugger.Launch(); // enable this line for debugging
             context.RegisterForSyntaxNotifications(() => new SyntaxReceiver());
         }
 

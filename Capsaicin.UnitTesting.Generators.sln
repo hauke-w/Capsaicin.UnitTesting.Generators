@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleTestProject", "Examp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Capsaicin.UnitTesting.Generators", "Capsaicin.UnitTesting.Generators\Capsaicin.UnitTesting.Generators.csproj", "{E2ED8AD8-8446-4E4F-9A7C-5A3B2A8E72C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capsaicin.CodeAnalysis.Common", "Libraries\Capsaicin.CodeAnalysis.Common\Capsaicin.CodeAnalysis.Common\Capsaicin.CodeAnalysis.Common.csproj", "{98516516-B6C0-49C5-A5F2-1C2070B9518C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Capsaicin.CodeAnalysis.Common", "Libraries\Capsaicin.CodeAnalysis.Common\Capsaicin.CodeAnalysis.Common\Capsaicin.CodeAnalysis.Common.csproj", "{98516516-B6C0-49C5-A5F2-1C2070B9518C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capsaicin.UnitTesting", "Capsaicin.UnitTesting\Capsaicin.UnitTesting.csproj", "{45D45596-0CCD-433F-BC8D-F27D9ACC28B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{98516516-B6C0-49C5-A5F2-1C2070B9518C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98516516-B6C0-49C5-A5F2-1C2070B9518C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98516516-B6C0-49C5-A5F2-1C2070B9518C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45D45596-0CCD-433F-BC8D-F27D9ACC28B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45D45596-0CCD-433F-BC8D-F27D9ACC28B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45D45596-0CCD-433F-BC8D-F27D9ACC28B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45D45596-0CCD-433F-BC8D-F27D9ACC28B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

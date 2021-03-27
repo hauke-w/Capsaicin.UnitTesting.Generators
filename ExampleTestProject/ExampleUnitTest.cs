@@ -26,9 +26,9 @@ namespace ExampleTestProject
         [ExpressionDataRow("Object4: 3,142", "Objects[0]", "F3", "CultureInfo.GetCultureInfo(\"de-DE\")")]
         [ExpressionDataRow("Object5: nested: 123.456", "Objects[1]", "", "CultureInfo.GetCultureInfo(\"en-GB\")")]
         public partial void ToStringTest(string expected, // not annotated with FromCSharpExpression because values are expressed with constant expressions
-            [FromCSharpExpression]IFormattable testObject,
+            [FromCSharpExpression] IFormattable testObject,
             string? format, // not annotated with FromCSharpExpression because values are expressed with constant expressions
-            [FromCSharpExpression]IFormatProvider? formatProvider)
+            [FromCSharpExpression] IFormatProvider? formatProvider)
         {
             CultureInfo.CurrentCulture = CultureInfo.GetCultureInfo("en-GB");
             Assert.AreEqual(testObject.GetType().GetGenericTypeDefinition(), typeof(DemoClass<>), $"Invalid test data. {nameof(testObject)} is not typeof {typeof(DemoClass<>).FullName}.");
