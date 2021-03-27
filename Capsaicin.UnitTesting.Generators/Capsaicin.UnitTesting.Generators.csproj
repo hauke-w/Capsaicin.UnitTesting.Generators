@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -44,4 +44,14 @@
     <ProjectReference Include="..\Capsaicin.UnitTesting\Capsaicin.UnitTesting.csproj" />
   </ItemGroup>
 
+  <PropertyGroup>
+    <GetTargetPathDependsOn>$(GetTargetPathDependsOn);GetDependencyTargetPaths</GetTargetPathDependsOn>
+  </PropertyGroup>
+      
+  <Target Name="GetDependencyTargetPaths">
+    <ItemGroup>
+      <TargetPathWithTargetPlatformMoniker Include="$(TargetDir)\Capsaicin.CodeAnalysis.Common.dll" IncludeRuntimeDependency="false" />
+      <TargetPathWithTargetPlatformMoniker Include="$(TargetDir)\Capsaicin.UnitTesting.dll" IncludeRuntimeDependency="true" />
+    </ItemGroup>
+  </Target>
 </Project>
