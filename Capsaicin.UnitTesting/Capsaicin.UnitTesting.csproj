@@ -8,6 +8,8 @@
     <Authors>Hauke Wittern</Authors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Copyright>Hauke Wittern</Copyright>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
 </Project>
