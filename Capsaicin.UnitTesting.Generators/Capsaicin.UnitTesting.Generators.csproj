@@ -30,7 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Capsaicin.CodeAnalysis.Common\Capsaicin.CodeAnalysis.Common.csproj" />
+    <ProjectReference Include="$(SolutionDir)\Libraries\Capsaicin.CodeAnalysis.Common\Capsaicin.CodeAnalysis.Common\Capsaicin.CodeAnalysis.Common.csproj" />
   </ItemGroup>
 
 </Project>
