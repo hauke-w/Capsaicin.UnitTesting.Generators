@@ -5,6 +5,7 @@ using System.Text;
 
 namespace Capsaicin.Generators
 {
+    [Obsolete("This class is currently not used and might be removed")]
     internal class InvalidSourceException : Exception
     {
         internal InvalidSourceException(DiagnosticDescriptor diagnosticDescriptor, Location location, params object?[] messageArgs) : base(string.Format(diagnosticDescriptor.MessageFormat.ToString(), messageArgs))
