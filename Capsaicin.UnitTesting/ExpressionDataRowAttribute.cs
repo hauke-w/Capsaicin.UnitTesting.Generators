@@ -21,7 +21,7 @@ namespace Capsaicin.UnitTesting
         /// <param name="parameters">The test data parameters.</param>
         public ExpressionDataRowAttribute(params object?[] parameters)
         {
-            Parameters = parameters;
+            Parameters = parameters ?? throw new ArgumentNullException(nameof(parameters));
         }
 
         /// <summary>
