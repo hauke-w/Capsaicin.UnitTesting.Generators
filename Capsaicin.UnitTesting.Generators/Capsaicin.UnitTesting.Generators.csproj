@@ -14,7 +14,7 @@
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Description>Provides a C# source generator that generates Attribute classes implementing ITestDataSource. The source generator enables test developers to specify test data using c# expressions with ExpressionDataRows. This overcomes the limitation of C#-Attributes allowing only constant values.</Description>
-    <Version>0.1.0-beta.1</Version>
+    <Version>0.1.0-beta.2</Version>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
@@ -48,7 +48,9 @@
 
   <ItemGroup>
     <!-- Generator dependencies -->
-    <PackageReference Include="Capsaicin.CodeAnalysis.Common" Version="0.1.0-beta.2" GeneratePathProperty="true" PrivateAssets="all" />
+    <PackageReference Include="Capsaicin.CodeAnalysis.Common" Version="0.1.0-beta.2" GeneratePathProperty="true">
+      <IncludeAssets>all</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <PropertyGroup>
