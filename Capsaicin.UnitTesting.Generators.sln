@@ -11,7 +11,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Capsaicin.UnitTesting", "Ca
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Capsaicin.UnitTesting.Tests", "Capsaicin.UnitTesting.Tests\Capsaicin.UnitTesting.Tests.csproj", "{4B1EBAC2-8E2D-417B-8D5F-FD69C522F5F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capsaicin.UnitTesting.Generators.Tests", "Capsaicin.UnitTesting.Generators.Tests\Capsaicin.UnitTesting.Generators.Tests.csproj", "{E495FB84-BECB-4725-8D90-496AFA589B2A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Capsaicin.UnitTesting.Generators.Tests", "Capsaicin.UnitTesting.Generators.Tests\Capsaicin.UnitTesting.Generators.Tests.csproj", "{E495FB84-BECB-4725-8D90-496AFA589B2A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F8F05A0C-D9F2-4517-9828-B1AF87AFE9F5}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
