@@ -1,6 +1,5 @@
 ﻿using Microsoft.CodeAnalysis;
 using System.Reflection;
-using Capsaicin.Generators;
 using System.Diagnostics;
 using System;
 using Microsoft.CodeAnalysis.Text;
