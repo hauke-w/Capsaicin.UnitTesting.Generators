@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Capsaicin.UnitTesting", "Ca
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capsaicin.CodeAnalysis.Common.Tests", "Libraries\Capsaicin.CodeAnalysis.Common\Capsaicin.CodeAnalysis.Common.Tests\Capsaicin.CodeAnalysis.Common.Tests.csproj", "{D9F15D4A-2383-463E-B91A-5DA748AC1B38}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capsaicin.UnitTesting.Tests", "Capsaicin.UnitTesting.Tests\Capsaicin.UnitTesting.Tests.csproj", "{4B1EBAC2-8E2D-417B-8D5F-FD69C522F5F5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{D9F15D4A-2383-463E-B91A-5DA748AC1B38}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9F15D4A-2383-463E-B91A-5DA748AC1B38}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9F15D4A-2383-463E-B91A-5DA748AC1B38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B1EBAC2-8E2D-417B-8D5F-FD69C522F5F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B1EBAC2-8E2D-417B-8D5F-FD69C522F5F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B1EBAC2-8E2D-417B-8D5F-FD69C522F5F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B1EBAC2-8E2D-417B-8D5F-FD69C522F5F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
