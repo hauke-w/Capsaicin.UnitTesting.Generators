@@ -20,7 +20,7 @@ public class CalculatorTest
     [ExpressionDataRow("4", "new Calculator(culture: \"en-GB\"))", 2)]
     [ExpressionDataRow("1,44", "new Calculator(\"de-DE\")", 1.2)]
     [ExpressionDataRow("6.25", "new Calculator(\"en-US\")", 2.5)]
-    public void SquareTest(int expected, [FromCSharpExpression]Calculator testObject, double number)
+    public void SquareTest(string expected, [FromCSharpExpression]Calculator testObject, double number)
     {
         string actual = testObject.Square(number);
         Assert.AreEqual(expected, actual);
