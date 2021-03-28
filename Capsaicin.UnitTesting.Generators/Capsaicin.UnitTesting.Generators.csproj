@@ -7,10 +7,10 @@
     <Authors>Hauke Wittern</Authors>
     <Copyright>Hauke Wittern</Copyright>
     <RootNamespace>Capsaicin</RootNamespace>
-    <DebugType>embedded</DebugType>
-    <DebugSymbols>true</DebugSymbols>
+    <!--<DebugType>embedded</DebugType>
+    <DebugSymbols>true</DebugSymbols>-->
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <ContinuousIntegrationBuild>True</ContinuousIntegrationBuild>
+    <!--<ContinuousIntegrationBuild>True</ContinuousIntegrationBuild>-->
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Description>Provides a C# source generator that generates Attribute classes implementing ITestDataSource. The source generator enables test developers to specify test data using c# expressions with ExpressionDataRows. This overcomes the limitation of C#-Attributes allowing only constant values.</Description>
@@ -42,7 +42,6 @@
   <ItemGroup>
     <!-- Generator dependencies -->
     <PackageReference Include="Capsaicin.CodeAnalysis.Common" Version="0.1.0-beta.2" GeneratePathProperty="true" PrivateAssets="all" />
-    <!--<ProjectReference Include="..\Capsaicin.UnitTesting\Capsaicin.UnitTesting.csproj" />-->
   </ItemGroup>
 
   <PropertyGroup>
@@ -52,7 +51,6 @@
   <Target Name="GetDependencyTargetPaths">
     <ItemGroup>
       <TargetPathWithTargetPlatformMoniker Include="$(PKGCapsaicin_CodeAnalysis_Common)\lib\netstandard2.0\Capsaicin.CodeAnalysis.Common.dll" IncludeRuntimeDependency="true" />
-      <!--<TargetPathWithTargetPlatformMoniker Include="$(TargetDir)\Capsaicin.UnitTesting.dll" IncludeRuntimeDependency="true" />-->
     </ItemGroup>
   </Target>
 </Project>
