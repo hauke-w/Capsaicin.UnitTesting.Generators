@@ -16,42 +16,43 @@
     <Description>Provides a C# source generator that generates Attribute classes implementing ITestDataSource. The source generator enables test developers to specify test data using c# expressions with ExpressionDataRows. This overcomes the limitation of C#-Attributes allowing only constant values.</Description>
     <Version>0.1.0-alpha.1</Version>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile></DocumentationFile>
-  </PropertyGroup>
-  
   <PropertyGroup>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild> <!-- Generates a package at build -->
-    <IncludeBuildOutput>false</IncludeBuildOutput> <!-- Do not include the generator as a lib dependency -->
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
   </PropertyGroup>
 
-  <ItemGroup>    
-    <!-- Package the generator in the analyzer directory of the nuget package -->
-    <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+  <ItemGroup>
+    <EmbeddedResource Include="../Capsaicin.UnitTesting/ExpressionDataRowAttribute.cs" />
+    <EmbeddedResource Include="../Capsaicin.UnitTesting/FromCSharpExpressionAttribute.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Capsaicin.CodeAnalysis.Common" Version="0.1.0-beta.1" />
+    <!-- Package the generator in the analyzer directory of the nuget package -->
+    <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+  </ItemGroup>
+  
+  <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis" Version="3.9.0" />
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="3.9.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Capsaicin.UnitTesting\Capsaicin.UnitTesting.csproj" />
+    <!-- Generator dependencies -->
+    <PackageReference Include="Capsaicin.CodeAnalysis.Common" Version="0.1.0-beta.2" GeneratePathProperty="true" PrivateAssets="all" />
+    <!--<ProjectReference Include="..\Capsaicin.UnitTesting\Capsaicin.UnitTesting.csproj" />-->
   </ItemGroup>
 
   <PropertyGroup>
     <GetTargetPathDependsOn>$(GetTargetPathDependsOn);GetDependencyTargetPaths</GetTargetPathDependsOn>
   </PropertyGroup>
-      
+
   <Target Name="GetDependencyTargetPaths">
     <ItemGroup>
-      <TargetPathWithTargetPlatformMoniker Include="$(TargetDir)\Capsaicin.CodeAnalysis.Common.dll" IncludeRuntimeDependency="false" />
-      <TargetPathWithTargetPlatformMoniker Include="$(TargetDir)\Capsaicin.UnitTesting.dll" IncludeRuntimeDependency="true" />
+      <TargetPathWithTargetPlatformMoniker Include="$(PKGCapsaicin_CodeAnalysis_Common)\lib\netstandard2.0\Capsaicin.CodeAnalysis.Common.dll" IncludeRuntimeDependency="true" />
+      <!--<TargetPathWithTargetPlatformMoniker Include="$(TargetDir)\Capsaicin.UnitTesting.dll" IncludeRuntimeDependency="true" />-->
     </ItemGroup>
   </Target>
 </Project>

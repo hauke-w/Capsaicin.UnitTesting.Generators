@@ -6,7 +6,7 @@ namespace Capsaicin.UnitTesting
     /// Denotes c# expression parameters.
     /// </summary>
     [AttributeUsage(AttributeTargets.Parameter, Inherited = false, AllowMultiple = false)]
-    public sealed class FromCSharpExpressionAttribute : Attribute
+    internal sealed class FromCSharpExpressionAttribute : Attribute
     {
     }
 }

@@ -22,7 +22,6 @@ namespace Capsaicin.UnitTesting.Generators
 
             private readonly GeneratorExecutionContext GeneratorExecutionContext;
             private readonly SyntaxReceiver SyntaxReceiver;
-
             private const int IndentionStep = 4;
 
             internal void Generate()

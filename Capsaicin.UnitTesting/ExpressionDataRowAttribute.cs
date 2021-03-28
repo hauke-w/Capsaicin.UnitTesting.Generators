@@ -8,7 +8,7 @@ namespace Capsaicin.UnitTesting
     /// Denotes a test data row that might include parameters that are evaluated using an expression.
     /// </summary>
     [AttributeUsage(AttributeTargets.Method, Inherited = false, AllowMultiple = true)]
-    public sealed class ExpressionDataRowAttribute : Attribute
+    internal sealed class ExpressionDataRowAttribute : Attribute
     {
         /// <summary>
         /// Creates test data definition using c# expressions.
