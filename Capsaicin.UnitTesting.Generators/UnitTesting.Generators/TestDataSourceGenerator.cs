@@ -25,12 +25,12 @@ namespace Capsaicin.UnitTesting.Generators
 
         #region Error definitions
         private static DiagnosticDescriptor ErrorMethodIsNotPartial => new DiagnosticDescriptor(
-    DiagnosticIdPrefix + "001",
-    "Method is not partial",
-    "The method '{0}' is not partial.",
-    MessageCategory,
-    DiagnosticSeverity.Error,
-    true);
+            DiagnosticIdPrefix + "001",
+            "Method is not partial",
+            "The method '{0}' is not partial.",
+            MessageCategory,
+            DiagnosticSeverity.Error,
+            true);
 
         private static DiagnosticDescriptor ErrorParameterCountMismatch => new DiagnosticDescriptor(
             DiagnosticIdPrefix + "002",
