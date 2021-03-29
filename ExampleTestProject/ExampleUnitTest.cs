@@ -18,8 +18,8 @@ namespace ExampleTestProject
         };
 
         [TestMethod]
-        [ExpressionDataRow("Object1: -123,456.00", "new DemoClass<int>(\"Object1\", -123456)", "N2", "null")]
-        [ExpressionDataRow("Object2: 1.414214", "new DemoClass<double>(\"Object2\", Math.Sqrt(2))", "F6", null)]
+        [ExpressionDataRow("Object1: -123,456.00", "new DemoClass<int>(\"Object1\", -123456)", "N2", "null")] // "null" and ...
+        [ExpressionDataRow("Object2: 1.414214", "new DemoClass<double>(\"Object2\", Math.Sqrt(2))", "F6", null)] // ... null have no difference for FromCSharpExpression parameters
         // expression may contain method call, which is usefull for complex objects:
         [ExpressionDataRow("Object3: 81", "CreateObject3()", null, "CultureInfo.InvariantCulture")]
         // expression may contain reference to static field or property:
