@@ -14,7 +14,7 @@
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Description>Provides a C# source generator that generates Attribute classes implementing ITestDataSource. The source generator enables test developers to specify test data using c# expressions with ExpressionDataRows. This overcomes the limitation of C#-Attributes allowing only constant values.</Description>
-    <Version>0.1.0-beta.3</Version>
+    <Version>0.1.0-beta.4</Version>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
@@ -33,11 +33,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <!-- Package the generator in the analyzer directory of the nuget package -->
-    <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis" Version="3.9.0" />
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="3.9.0" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0">
@@ -47,20 +42,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <!-- https://github.com/dotnet/roslyn/blob/main/docs/features/source-generators.cookbook.md#use-functionality-from-nuget-packages -->
     <!-- Generator dependencies -->
-    <PackageReference Include="Capsaicin.CodeAnalysis.Common" Version="0.1.0-beta.2" GeneratePathProperty="true">
-      <PrivateAssets>build; native; contentfiles; analyzers; buildtransitive</PrivateAssets>
-      <IncludeAssets>all</IncludeAssets>
-    </PackageReference>
+    <PackageReference Include="Capsaicin.CodeAnalysis.Common" Version="0.1.0-beta.2" GeneratePathProperty="true" PrivateAssets="all" />
+    
+    <!-- Package the generator in the analyzer directory of the nuget package -->
+    <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+    <!-- Package also dependencies in the analyzer directory of the nuget package -->
+    <None Include="$(PKGCapsaicin_CodeAnalysis_Common)\lib\netstandard2.0\Capsaicin.CodeAnalysis.Common.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
   </ItemGroup>
 
-  <PropertyGroup>
-    <GetTargetPathDependsOn>$(GetTargetPathDependsOn);GetDependencyTargetPaths</GetTargetPathDependsOn>
-  </PropertyGroup>
-
-  <Target Name="GetDependencyTargetPaths">
-    <ItemGroup>
-      <TargetPathWithTargetPlatformMoniker Include="$(PKGCapsaicin_CodeAnalysis_Common)\lib\netstandard2.0\Capsaicin.CodeAnalysis.Common.dll" IncludeRuntimeDependency="false" />
-    </ItemGroup>
-  </Target>
 </Project>
