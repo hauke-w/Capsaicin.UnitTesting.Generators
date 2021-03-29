@@ -25,7 +25,8 @@ namespace ExampleTestProject
         // expression may contain reference to static field or property:
         [ExpressionDataRow("Object4: 3,142", "Objects[0]", "F3", "CultureInfo.GetCultureInfo(\"de-DE\")")]
         [ExpressionDataRow("Object5: nested: 123.456", "Objects[1]", "", "CultureInfo.GetCultureInfo(\"en-GB\")")]
-        public partial void ToStringTest(string expected, // not annotated with FromCSharpExpression because values are expressed with constant expressions
+        public partial void ToStringTest(
+            string expected, // not annotated with FromCSharpExpression because values are expressed with constant expressions
             [FromCSharpExpression] IFormattable testObject,
             string? format, // not annotated with FromCSharpExpression because values are expressed with constant expressions
             [FromCSharpExpression] IFormatProvider? formatProvider)
