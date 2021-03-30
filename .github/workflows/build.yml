@@ -19,7 +19,9 @@ jobs:
         dotnet-version: 5.0.x
     - name: Restore dependencies
       run: dotnet restore
+    - name: Install dependencies
+      run: dotnet add package Capsaicin.CodeAnalysis.Common --version 0.1.0-beta.2
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build --no-restore      
     - name: Test
       run: dotnet test --no-build --verbosity normal
