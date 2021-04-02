@@ -44,7 +44,7 @@
   <ItemGroup>
     <!-- https://github.com/dotnet/roslyn/blob/main/docs/features/source-generators.cookbook.md#use-functionality-from-nuget-packages -->
     <!-- Generator dependencies -->
-    <PackageReference Include="Capsaicin.CodeAnalysis.Common" Version="0.1.0-beta.2" GeneratePathProperty="true" PrivateAssets="all" />
+    <PackageReference Include="Capsaicin.CodeAnalysis.Common" Version="0.3.0" GeneratePathProperty="true" PrivateAssets="all" />
     
     <!-- Package the generator in the analyzer directory of the nuget package -->
     <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
