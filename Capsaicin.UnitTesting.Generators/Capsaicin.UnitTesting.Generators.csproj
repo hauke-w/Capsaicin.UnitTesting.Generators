@@ -7,14 +7,13 @@
     <Authors>Hauke Wittern</Authors>
     <Copyright>Hauke Wittern</Copyright>
     <RootNamespace>Capsaicin</RootNamespace>
-    <!--<DebugType>embedded</DebugType>
-    <DebugSymbols>true</DebugSymbols>-->
+    <DebugType>embedded</DebugType>
+    <DebugSymbols>true</DebugSymbols>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <!--<ContinuousIntegrationBuild>True</ContinuousIntegrationBuild>-->
+    <ContinuousIntegrationBuild>True</ContinuousIntegrationBuild>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Description>Provides a C# source generator that generates Attribute classes implementing ITestDataSource. The source generator enables test developers to specify test data using c# expressions with ExpressionDataRows. This overcomes the limitation of C#-Attributes allowing only constant values.</Description>
-    <Version>0.1.0-beta.4</Version>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
@@ -23,7 +22,7 @@
     <PackageProjectUrl>https://github.com/hauke-w/Capsaicin.UnitTesting.Generators</PackageProjectUrl>
     <RepositoryUrl>https://github.com/hauke-w/Capsaicin.UnitTesting.Generators.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <IncludeBuildOutput>false</IncludeBuildOutput>
   </PropertyGroup>
 
