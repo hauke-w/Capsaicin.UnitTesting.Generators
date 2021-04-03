@@ -8,7 +8,7 @@ on:
     - ./GitVersion.yaml
     - ./README.md
     - .github/workflows/build.yml
-    - ./ExampleTestProject/*
+    - ./ExampleTestProject/**.*
   workflow_dispatch:
 
 jobs:
