@@ -7,20 +7,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Capsaicin.CodeAnalysis.Extensions;
+using Capsaicin.CodeAnalysis.Generators;
 
 namespace Capsaicin.UnitTesting.Generators
 {
     partial class TestDataSourceGenerator
     {
-        private class ExecuteContext
+        private class ExecuteContext : ExecuteContextBase
         {
             public ExecuteContext(GeneratorExecutionContext generatorExecutionContext, SyntaxReceiver syntaxReceiver)
+                : base(generatorExecutionContext)
             {
-                GeneratorExecutionContext = generatorExecutionContext;
                 SyntaxReceiver = syntaxReceiver;
             }
 
-            private readonly GeneratorExecutionContext GeneratorExecutionContext;
             private readonly SyntaxReceiver SyntaxReceiver;
             private const int IndentionStep = 4;
 
@@ -250,15 +250,6 @@ namespace {methodSymbol.ContainingNamespace.ToDisplayString()}
                     sourceBuilder.Append(padding);
                     sourceBuilder.AppendLine("}");
                 }
-            }
-
-            private void ReportDiagnostic(DiagnosticDescriptor diagnosticDescriptor, ISymbol forSymbol)
-                => ReportDiagnostic(diagnosticDescriptor, forSymbol.Locations[0], forSymbol.Name);
-
-            private void ReportDiagnostic(DiagnosticDescriptor diagnosticDescriptor, Location location, params object?[] messageArgs)
-            {
-                var diagnostic = Diagnostic.Create(diagnosticDescriptor, location, messageArgs);
-                GeneratorExecutionContext.ReportDiagnostic(diagnostic);
             }
         }
     }
