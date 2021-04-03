@@ -5,6 +5,7 @@ using System;
 using Microsoft.CodeAnalysis.Text;
 using System.Text;
 using System.IO;
+using Capsaicin.CodeAnalysis.Extensions;
 
 namespace Capsaicin.UnitTesting.Generators
 {
@@ -68,18 +69,10 @@ namespace Capsaicin.UnitTesting.Generators
             }
         }
 
-        private static void GenerateAttributeClasses(GeneratorPostInitializationContext context)
+        private void GenerateAttributeClasses(GeneratorPostInitializationContext context)
         {
-            GenerateSourceFromResource("ExpressionDataRowAttribute.cs", context);
-            GenerateSourceFromResource("FromCSharpExpressionAttribute.cs", context);
-        }
-
-        private static void GenerateSourceFromResource(string resourceName, GeneratorPostInitializationContext context)
-        {
-            using var resourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Capsaicin." + resourceName);
-            using var resourceStreamReader = new StreamReader(resourceStream);
-            var sourceCode = resourceStreamReader.ReadToEnd();
-            context.AddSource(resourceName, SourceText.From(sourceCode, Encoding.UTF8));
+            context.GenerateSourceFromResource(this, SourceFromResourceSpecifier.CreateFromResourcePrefixAndSuffix("Capsaicin.", "ExpressionDataRowAttribute.cs"));
+            context.GenerateSourceFromResource(this, SourceFromResourceSpecifier.CreateFromResourcePrefixAndSuffix("Capsaicin.", "FromCSharpExpressionAttribute.cs"));
         }
     }
 }
