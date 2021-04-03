@@ -2,24 +2,72 @@ name: .NET
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches:
+    - main
+    paths-ignore:
+    - ./GitVersion.yaml
+    - ./README.md
+    - .github/workflows/build.yml
+  workflow_dispatch:
 
 jobs:
   build:
 
     runs-on: windows-latest
+    env:
+      BuildConfiguration: Debug
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
+        
+    # https://github.com/GitTools/actions/blob/main/docs/examples/github/gitversion/setup/usage-examples.md
+    - name: Setup GitTools
+      uses: gittools/actions/gitversion/setup@v0.9.9
+      with:
+        versionSpec: '5.x'
+        
+    # https://github.com/GitTools/actions/blob/main/docs/examples/github/gitversion/execute/usage-examples.md
+    - name: Determine Version
+      uses: gittools/actions/gitversion/execute@v0.9.9
+
+    - name: Set build configuration
+      if: ${{ github.ref == 'refs/heads/main' }}
+      run: echo "set build configuration to Release"
+      env:
+        BuildConfiguration: Release
+        
     - name: Restore dependencies
-      run: dotnet restore --verbosity normal
+      run: dotnet restore
+
     - name: Build
-      run: dotnet build --no-restore      
+      run: dotnet build --no-restore /p:configuration=${{ env.BuildConfiguration }} /p:AssemblyInformationalVersion=${{ env.GitVersion_InformationalVersion }} /p:Version=${{ env.GitVersion_SemVer }} /p:AssemblyVersion=${{ env.GitVersion_AssemblySemFileVer }}
+
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --no-build --no-restore --verbosity normal /p:configuration=${{ env.BuildConfiguration }}
+
+    - name: Pack
+      if: ${{ github.ref == 'refs/heads/main' }}
+      run: dotnet pack Capsaicin.UnitTesting.Generators/Capsaicin.UnitTesting.Generators.csproj --no-build --no-restore --verbosity normal /p:configuration=${{ env.BuildConfiguration }} /p:AssemblyInformationalVersion=${{ env.GitVersion_InformationalVersion }} /p:Version=${{ env.GitVersion_SemVer }} /p:AssemblyVersion=${{ env.GitVersion_AssemblySemFileVer }}
+
+    - name: Push nuget package
+      if: ${{ github.ref == 'refs/heads/main' }}
+      run: dotnet nuget push **/*.nupkg --skip-duplicate --api-key ${{ secrets.NUGETAPIKEY }} --source https://api.nuget.org/v3/index.json
+
+    - name: Create tag
+      if: ${{ github.ref == 'refs/heads/main' }}
+      uses: actions/github-script@v3
+      with:
+        github-token: ${{ github.token }}
+        script: |
+          github.git.createRef({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            ref: "refs/tags/v${{ env.GitVersion_SemVer }}",
+            sha: context.sha
+          })
