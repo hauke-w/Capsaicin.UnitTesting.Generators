@@ -41,10 +41,14 @@
     </PackageReference>
   </ItemGroup>
 
+  <PropertyGroup>
+    <GetTargetPathDependsOn>$(GetTargetPathDependsOn);GetDependencyTargetPaths</GetTargetPathDependsOn>
+  </PropertyGroup>
+  
   <ItemGroup>
     <!-- https://github.com/dotnet/roslyn/blob/main/docs/features/source-generators.cookbook.md#use-functionality-from-nuget-packages -->
     <!-- Generator dependencies -->
-    <PackageReference Include="Capsaicin.CodeAnalysis.Common" Version="0.3.0" GeneratePathProperty="true" PrivateAssets="all" />
+    <PackageReference Include="Capsaicin.CodeAnalysis.Common" Version="0.4.0" GeneratePathProperty="true" PrivateAssets="all" />
     
     <!-- Package the generator in the analyzer directory of the nuget package -->
     <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
@@ -52,4 +56,9 @@
     <None Include="$(PKGCapsaicin_CodeAnalysis_Common)\lib\netstandard2.0\Capsaicin.CodeAnalysis.Common.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
   </ItemGroup>
 
+  <Target Name="GetDependencyTargetPaths">
+    <ItemGroup>
+      <TargetPathWithTargetPlatformMoniker Include="$(PKGCapsaicin_CodeAnalysis_Common)\lib\netstandard2.0\Capsaicin.CodeAnalysis.Common.dll" IncludeRuntimeDependency="false" />
+    </ItemGroup>
+  </Target>
 </Project>
