@@ -167,13 +167,14 @@ namespace {methodSymbol.ContainingNamespace.ToDisplayString()}
                     new object?[]
                     {{");
 
-                    for (int i = 0; i < parametersData.Length; i++)
-                    {
-                        var valueExpression = GetValueExpression(i);
-                        stringBuilder.Append($@"
+                for (int i = 0; i < parametersData.Length; i++)
+                {
+                    //stringBuilder.AppendLine($"// type: {parametersData[i].Type?.Name ?? "<unkown>"}; ToString={parametersData[i].ToString()}");
+                    var valueExpression = GetValueExpression(i);
+                    stringBuilder.Append($@"
                         {valueExpression},");
-                    }
-                    stringBuilder.AppendLine($@"
+                }
+                stringBuilder.AppendLine($@"
                     }}
                 }};
             }}
@@ -204,10 +205,18 @@ namespace {methodSymbol.ContainingNamespace.ToDisplayString()}
                         }
                         else
                         {
-                            return parameterData.Value?.ToString() ?? "null";
+                            return (parameterData.Value?.ToString() ?? "null");
                         }
                     }
-                    return parameterData.ToCSharpString();
+
+                    var value = parameterData.ToCSharpString();
+                    if (parameterData.Type is not null)
+                    {
+                        // explicit conversion required because some constants may not express the correctly typed value (e.g. 0 is integer but a double may be the correct type: (double)0)
+                        // TODO: can we optimize this so that unnecessary conversion is not generated?
+                        value = $"({parameterData.Type.ToDisplayString()}){value}";
+                    }
+                    return value;
                 }
             }
 
