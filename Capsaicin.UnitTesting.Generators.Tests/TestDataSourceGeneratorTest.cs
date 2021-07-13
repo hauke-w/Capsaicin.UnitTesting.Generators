@@ -43,5 +43,22 @@ namespace Capsaicin.UnitTesting.Generators
             var actual = testObject.ToString(format, formatProvider);
             Assert.AreEqual(expected, actual);
         }
+
+        /// <summary>
+        /// Implicitly tests TestDataSourceGenerator and verifies object values are correctly evaluated
+        /// </summary>
+        /// <param name="notFromExpression"></param>
+        /// <param name="fromExpression"></param>
+        [TestMethod]
+        [ExpressionDataRow(1.23d, "1.23d", typeof(double))]
+        [ExpressionDataRow(0d, "0d", typeof(double))]
+        [ExpressionDataRow(-6d, "-6d", typeof(double))]
+        [ExpressionDataRow(0, "0", typeof(int))]
+        public partial void Generate_ObjectValues_Test(object notFromExpression, [FromCSharpExpression] object fromExpression, Type expectedType)
+        {
+            Assert.IsInstanceOfType(fromExpression, expectedType);
+            Assert.IsInstanceOfType(notFromExpression, expectedType);
+            Assert.AreEqual(notFromExpression, fromExpression);
+        }
     }
 }
